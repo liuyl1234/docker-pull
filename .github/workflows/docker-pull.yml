@@ -4,19 +4,19 @@ on:
   workflow_dispatch:
     inputs:
       IMAGE_NAME:
-        description: '原镜像名称:版本'
+        description: 'main'
         required: true
         default: 'mysql/mysql-server'
       NEW_NAME:
-        description: '同步后镜像名称:版本'
+        description: 'main'
         required: true
         default: 'mysql-server'
       TARGET_REGISTRY:
-        description: '仓库地址'
+        description: 'registry.cn-hangzhou.aliyuncs.com/liuyl1201/docker'
         required: true
         default: 'registry.cn-chengdu.aliyuncs.com'
       TARGET_REPOSITORY:
-        description: '空间名称'
+        description: 'liuyl'
         required: true
         default: 'aopkcn'
       ARCH:
@@ -37,7 +37,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 登录到 Docker 仓库
+      - name: liuyl1201
         id: login
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} ${{ github.event.inputs.TARGET_REGISTRY }}
         continue-on-error: true
